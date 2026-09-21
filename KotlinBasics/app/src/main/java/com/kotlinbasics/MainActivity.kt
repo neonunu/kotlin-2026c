@@ -29,7 +29,35 @@ class MainActivity : ComponentActivity() {
         }
         week03Variables()
         week03Functions()
+        week04Classes()
     }
+}
+
+private fun week04Classes(){
+    println("=======kotlin Classes=======")
+
+    class Student(){
+        var name : String = ""
+        var age : Int = 0
+
+        fun introduce(){
+            println("Hi, I'm $name and I'm $age years old")
+        }
+    }
+    val student1 = Student()
+    student1.name = "Mirae"
+    student1.age = 21
+    student1.introduce()
+
+    data class Person(val name: String, val age: Int) // java : toString
+
+    val person1 = Person(name = "Kim", age = 23)
+    val person2 = Person(name = "park", age = 21)
+
+    println("Person1 : $person1")
+    println("Person1 : ${person1.name}")
+    println("Person1 : ${person1.age}")
+    println("Person2 : $person2")
 }
 
 private fun week03Variables() {
@@ -80,11 +108,8 @@ private fun week03Functions(){
         for(m in msg) println(m)
     }
 
-    printAll(vip : true, name: "dy")
-    printAll(name = "mirae", vip = true)
-
-    printMany(msg: "A", "B", "C", "D")
-
+    printAll(vip = true, name = "dy")
+    printMany("A", "B", "C", "D")
     fun greet(name: String): String {
         return "Hello, $name!"
     }
