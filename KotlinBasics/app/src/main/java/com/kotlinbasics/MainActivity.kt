@@ -73,6 +73,18 @@ private fun week03Functions(){
 
     println("========= Kotlin Functions =========")
 
+    fun printAll(vip : Boolean, name: String){
+        println("$vip, $name")
+    }
+    fun printMany(vararg msg: String){ // variable 가변변수
+        for(m in msg) println(m)
+    }
+
+    printAll(vip : true, name: "dy")
+    printAll(name = "mirae", vip = true)
+
+    printMany(msg: "A", "B", "C", "D")
+
     fun greet(name: String): String {
         return "Hello, $name!"
     }
