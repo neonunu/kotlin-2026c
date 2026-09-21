@@ -1,6 +1,7 @@
 package com.kotlinbasics
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -55,31 +56,37 @@ private fun week04Collections(){
     scores.forEach{(name, score) -> println("$name scored $score")}
     fruits.forEach{fruit -> println("$fruit")}
 }
+
 private fun week04Classes(){
-    println("=======kotlin Classes=======")
+    Log.d("KotlinWeek04", "== Kotlin Classes ==")
 
-    class Student(){
-        var name : String = ""
-        var age : Int = 0
-
+    class Person(val name: String, var age: Int){
         fun introduce(){
-            println("Hi, I'm $name and I'm $age years old")
+            Log.d("KotlinWeek04", "안녕하세요, $name ($age 세)입니다.")
+        }
+        fun birthday(){
+            age++
+            Log.d("KotlinWeek04", "$name 의 생일! 이제 $age 세...")
         }
     }
-    val student1 = Student()
-    student1.name = "Mirae"
-    student1.age = 21
-    student1.introduce()
+    val person1 = Person("홍길동", 27)
+    person1.introduce()
+    person1.birthday()
 
-    data class Person(val name: String, val age: Int) // java : toString
-
-    val person1 = Person(name = "Kim", age = 23)
-    val person2 = Person(name = "park", age = 21)
-
-    println("Person1 : $person1")
-    println("Person1 : ${person1.name}")
-    println("Person1 : ${person1.age}")
-    println("Person2 : $person2")
+    class Animal(var species: String){
+        var weight: Double = 0.0
+        constructor(species: String, weight: Double) : this(species){
+            this.weight = weight
+            Log.d("KotlinWeek04", "$species 의 무게 : $weight kg")
+        }
+        fun makeSound(){
+            Log.d("KotlinWeek04", "$species 가 소리를 냅니다.")
+        }
+    }
+    val puppy = Animal("웰시코기", 10.5)
+    val puppy2 = Animal("골든리트리버")
+    puppy.makeSound()
+    puppy2.makeSound()
 }
 
 private fun week03Variables() {
