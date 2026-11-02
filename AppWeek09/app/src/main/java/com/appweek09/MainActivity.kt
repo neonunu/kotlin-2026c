@@ -47,14 +47,14 @@ class MainActivity : AppCompatActivity() {
     private var currentMode = AppMode.STUDENT_LIST
 
     companion object {
-        private const val TAG = "KotlinWeek07App"
+        private const val TAG = "KotlinWeek09App"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Log.d(TAG, "onCreate: AppWeek07 started")
+        Log.d(TAG, "onCreate: AppWeek09 started")
 
         initializeData()
         setupViews()

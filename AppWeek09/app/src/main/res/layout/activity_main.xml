@@ -45,9 +45,9 @@
                 android:layout_weight="1"
                 android:text="Student\nList"
                 android:textSize="14sp"
-                android:checked="true"
                 android:buttonTint="#3498db"
-                android:gravity="center" />
+                android:gravity="center"
+                android:checked="true" />
 
             <RadioButton
                 android:id="@+id/radioShoppingCart"
@@ -76,7 +76,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="12dp">
+            android:layout_marginBottom="12dp"
+            android:visibility="visible">
 
             <EditText
                 android:id="@+id/editTextInput"
