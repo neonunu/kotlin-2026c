@@ -53,9 +53,8 @@ class MainActivity : AppCompatActivity() {
         setupAdapters()
         setupListeners()
 
-        // Set initial mode
-        setMode(AppMode.STUDENT_LIST)
         addInitialData()
+        setMode(AppMode.STUDENT_LIST)
     }
 
     private fun initializeData() {
@@ -126,15 +125,15 @@ class MainActivity : AppCompatActivity() {
         // Update UI visibility
         when (mode) {
             AppMode.STUDENT_LIST -> {
-                editTextInput.hint = "Enter student name"
-                buttonAdd.text = "Add Student"
+                editTextInput.hint = getString(R.string.hint_student_name)
+                buttonAdd.text = getString(R.string.action_add_student)
                 layoutCartControls.visibility = View.GONE
 
                 listView.adapter = studentAdapter
             }
             AppMode.SHOPPING_CART -> {
-                editTextInput.hint = "Enter item name"
-                buttonAdd.text = "Add Item"
+                editTextInput.hint = getString(R.string.hint_item_name)
+                buttonAdd.text = getString(R.string.action_add_item)
                 layoutCartControls.visibility = View.VISIBLE
 
                 listView.adapter = cartAdapter
@@ -150,7 +149,11 @@ class MainActivity : AppCompatActivity() {
         val input = editTextInput.text.toString().trim()
 
         if (input.isEmpty()) {
-            showToast("Please enter a ${currentMode.displayName.lowercase().dropLast(5)}")
+            val inputLabel = when (currentMode) {
+                AppMode.STUDENT_LIST -> "student name"
+                AppMode.SHOPPING_CART -> "item name"
+            }
+            showToast("Please enter a $inputLabel")
             return
         }
 
@@ -200,7 +203,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        if (price < 0 || quantity <= 0) {
+        if (price <= 0 || quantity <= 0) {
             showToast("Price and quantity must be positive")
             return
         }
@@ -296,13 +299,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showItemDetailsDialog(item: CartItem) {
-        val message = """
-            Item: ${item.name}
-            Quantity: ${item.quantity}
-            Unit Price: $${String.format("%.2f", item.price)}
-            Total: $${String.format("%.2f", item.getTotalPrice())}
-            Added: ${SimpleDateFormat("MM/dd/yyyy HH:mm", Locale.getDefault()).format(item.addedDate)}
-        """.trimIndent()
+        val addedDate = SimpleDateFormat("MM/dd/yyyy HH:mm", Locale.getDefault())
+            .format(item.addedDate)
+        val message = getString(
+            R.string.item_details,
+            item.name,
+            item.quantity,
+            item.price,
+            item.getTotalPrice(),
+            addedDate
+        )
 
         AlertDialog.Builder(this)
             .setTitle("Item Details")
@@ -314,7 +320,7 @@ class MainActivity : AppCompatActivity() {
     private fun updateInfoDisplay() {
         when (currentMode) {
             AppMode.STUDENT_LIST -> {
-                textViewInfo.text = "Total Students: ${studentList.size}"
+                textViewInfo.text = getString(R.string.total_students, studentList.size)
             }
             AppMode.SHOPPING_CART -> updateCartInfo()
         }
@@ -323,7 +329,7 @@ class MainActivity : AppCompatActivity() {
     private fun updateCartInfo() {
         val totalItems = cartItemList.sumOf { it.quantity }
         val totalValue = cartItemList.sumOf { it.getTotalPrice() }
-        textViewInfo.text = "Items: $totalItems | Total: $${String.format("%.2f", totalValue)}"
+        textViewInfo.text = getString(R.string.cart_summary, totalItems, totalValue)
     }
 
     private fun addInitialData() {

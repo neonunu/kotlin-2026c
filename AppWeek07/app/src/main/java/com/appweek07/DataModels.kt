@@ -1,6 +1,8 @@
 package com.appweek07
 
-import java.util.*
+import java.util.Date
+import java.util.Locale
+import java.util.UUID
 
 data class Student(
     val name: String,
@@ -18,7 +20,8 @@ data class CartItem(
     fun getTotalPrice(): Double = quantity * price
 
     override fun toString(): String {
-        return "$name (x$quantity) - $%.2f".format(getTotalPrice())
+        val formattedTotal = String.format(Locale.US, "%.2f", getTotalPrice())
+        return "$name (x$quantity) - $$formattedTotal"
     }
 }
 

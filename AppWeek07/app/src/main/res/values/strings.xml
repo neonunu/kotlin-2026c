@@ -1,3 +1,22 @@
 <resources>
-    <string name="app_name">Appweek07</string>
+    <string name="app_name">AppWeek07</string>
+    <string name="title_multi_mode_app">Multi-Mode App Manager</string>
+    <string name="label_select_mode">Select Mode:</string>
+    <string name="mode_student_list">Student\nList</string>
+    <string name="mode_shopping_cart">Shopping\nCart</string>
+    <string name="hint_student_name">Enter student name</string>
+    <string name="hint_item_name">Enter item name</string>
+    <string name="hint_price">Price ($)</string>
+    <string name="hint_quantity">Qty</string>
+    <string name="action_add">ADD</string>
+    <string name="action_add_student">Add Student</string>
+    <string name="action_add_item">Add Item</string>
+    <string name="action_clear_all">CLEAR ALL</string>
+    <string name="total_initial">Total: 0</string>
+    <string name="total_students">Total Students: %1$d</string>
+    <string name="cart_summary">Items: %1$d | Total: $%2$.2f</string>
+    <string name="item_details">Item: %1$s\nQuantity: %2$d\nUnit Price: $%3$.2f\nTotal: $%4$.2f\nAdded: %5$s</string>
+    <string name="instruction_item_interaction">Tap to interact • Long press to delete</string>
+    <string name="help_modes">Student List: Add and manage students\nShopping Cart: Add items with price and quantity</string>
+    <string name="footer_week07">Week 07: Git Branching and Feature Integration</string>
 </resources>
